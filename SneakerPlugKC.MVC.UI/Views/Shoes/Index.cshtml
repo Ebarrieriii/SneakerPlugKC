@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SneakerPlugKC.DATA.EF.Shoe>
+
+@{
+    ViewBag.Title = "Shoes By Sizes";
+}
+
+@section AddToHead{
+    <link href="~/Content/css/product.css" rel="stylesheet" />
+}
+
+
+
+<div class="container page-wrapper">
+    <h2 style="color: black;">@ViewBag.Title</h2>
+    <p>Shoes below are listed in mens sizes. For women sizes go 1.5 sizes down.</p>
+
+    <p>
+        @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <div class="row">
+        <div class="col-md-3">
+        <a href="@Url.Action("SizeFour", "Shoes")">
+            <img src="~/Content/img/ShoePics/shoe4.png" alt="Shoe Size 4" />
+        </a>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe45.png" alt="Shoe Size 4.5" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe5.png" alt="Shoe Size 5" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe55.png" alt="Shoe Size 5.5" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe6.png" alt="Shoe Size 6" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe65.png" alt="Shoe Size 6.5" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe7.png" alt="Shoe Size 7" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe75.png" alt="Shoe Size 7.5" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe8.png" alt="Shoe Size 8" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe85.png" alt="Shoe Size 8.5" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe9.png" alt="Shoe Size 9" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe95.png" alt="Shoe Size 9.5" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe10.png" alt="Shoe Size 10" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe105.png" alt="Shoe Size 10.5" />
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("SizeEleven", "Shoes")">
+            <img src="~/Content/img/ShoePics/shoe11.png" alt="Shoe Size 11" />
+
+            </a>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe115.png" alt="Shoe Size 11.5" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe12.png" alt="Shoe Size 12" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe125.png" alt="Shoe Size 12.5" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe13.png" alt="Shoe Size 13" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe14.png" alt="Shoe Size 14" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe15.png" alt="Shoe Size 15" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/img/ShoePics/shoe16.png" alt="Shoe Size 16" />
+        </div>
+    </div>
+</div>
+

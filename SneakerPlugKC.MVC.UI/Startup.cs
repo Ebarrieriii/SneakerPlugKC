@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(SneakerPlugKC.MVC.UI.Startup))]
-namespace SneakerPlugKC.MVC.UI
+namespace SneakerPlugKC.UI.MVC
 {
     public partial class Startup
     {

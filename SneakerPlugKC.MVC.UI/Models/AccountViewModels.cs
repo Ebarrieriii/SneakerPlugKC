@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SneakerPlugKC.MVC.UI.Models
+namespace SneakerPlugKC.UI.MVC.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

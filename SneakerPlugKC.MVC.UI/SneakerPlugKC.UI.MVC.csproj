@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -112,12 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -170,26 +170,145 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\ShoesController.cs" />
+    <Compile Include="Controllers\SizesController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\ImageUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\product.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\about.jpg" />
+    <Content Include="Content\img\beard-trim.png" />
+    <Content Include="Content\img\carousel-1.jpg" />
+    <Content Include="Content\img\carousel-2.jpg" />
+    <Content Include="Content\img\hair-dyeing.png" />
+    <Content Include="Content\img\haircut.png" />
+    <Content Include="Content\img\ShoePics\shoe10.png" />
+    <Content Include="Content\img\ShoePics\shoe105.png" />
+    <Content Include="Content\img\ShoePics\shoe11.png" />
+    <Content Include="Content\img\ShoePics\shoe115.png" />
+    <Content Include="Content\img\ShoePics\shoe12.png" />
+    <Content Include="Content\img\ShoePics\shoe125.png" />
+    <Content Include="Content\img\ShoePics\shoe13.png" />
+    <Content Include="Content\img\ShoePics\shoe14.png" />
+    <Content Include="Content\img\ShoePics\shoe15.png" />
+    <Content Include="Content\img\ShoePics\shoe16.png" />
+    <Content Include="Content\img\ShoePics\shoe4.png" />
+    <Content Include="Content\img\ShoePics\shoe45.png" />
+    <Content Include="Content\img\ShoePics\shoe5.png" />
+    <Content Include="Content\img\ShoePics\shoe55.png" />
+    <Content Include="Content\img\ShoePics\shoe6.png" />
+    <Content Include="Content\img\ShoePics\shoe65.png" />
+    <Content Include="Content\img\ShoePics\shoe7.png" />
+    <Content Include="Content\img\ShoePics\shoe75.png" />
+    <Content Include="Content\img\ShoePics\shoe8.png" />
+    <Content Include="Content\img\ShoePics\shoe85.png" />
+    <Content Include="Content\img\ShoePics\shoe9.png" />
+    <Content Include="Content\img\ShoePics\shoe95.png" />
+    <Content Include="Content\img\shoes\noimage.png" />
+    <Content Include="Content\img\mans-shave.png" />
+    <Content Include="Content\img\mustache.png" />
+    <Content Include="Content\img\open.jpg" />
+    <Content Include="Content\img\price.jpg" />
+    <Content Include="Content\img\stacking.png" />
+    <Content Include="Content\img\team-1.jpg" />
+    <Content Include="Content\img\team-2.jpg" />
+    <Content Include="Content\img\team-3.jpg" />
+    <Content Include="Content\img\team-4.jpg" />
+    <Content Include="Content\img\testimonial-1.jpg" />
+    <Content Include="Content\img\testimonial-2.jpg" />
+    <Content Include="Content\img\testimonial-3.jpg" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\lib\animate\animate.css" />
+    <Content Include="Content\lib\animate\animate.min.css" />
+    <Content Include="Content\lib\easing\easing.js" />
+    <Content Include="Content\lib\easing\easing.min.js" />
+    <Content Include="Content\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Content\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Content\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Content\lib\waypoints\links.php" />
+    <Content Include="Content\lib\waypoints\waypoints.min.js" />
+    <Content Include="Content\lib\wow\wow.js" />
+    <Content Include="Content\lib\wow\wow.min.js" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="_Archive\404.html" />
+    <Content Include="_Archive\about.html" />
+    <Content Include="_Archive\contact.html" />
+    <Content Include="_Archive\css\bootstrap.min.css" />
+    <Content Include="_Archive\css\style.css" />
+    <Content Include="_Archive\img\about.jpg" />
+    <Content Include="_Archive\img\beard-trim.png" />
+    <Content Include="_Archive\img\carousel-1.jpg" />
+    <Content Include="_Archive\img\carousel-2.jpg" />
+    <Content Include="_Archive\img\hair-dyeing.png" />
+    <Content Include="_Archive\img\haircut.png" />
+    <Content Include="_Archive\img\mans-shave.png" />
+    <Content Include="_Archive\img\mustache.png" />
+    <Content Include="_Archive\img\open.jpg" />
+    <Content Include="_Archive\img\price.jpg" />
+    <Content Include="_Archive\img\stacking.png" />
+    <Content Include="_Archive\img\team-1.jpg" />
+    <Content Include="_Archive\img\team-2.jpg" />
+    <Content Include="_Archive\img\team-3.jpg" />
+    <Content Include="_Archive\img\team-4.jpg" />
+    <Content Include="_Archive\img\testimonial-1.jpg" />
+    <Content Include="_Archive\img\testimonial-2.jpg" />
+    <Content Include="_Archive\img\testimonial-3.jpg" />
+    <Content Include="_Archive\index.html" />
+    <Content Include="_Archive\js\main.js" />
+    <Content Include="_Archive\lib\animate\animate.css" />
+    <Content Include="_Archive\lib\animate\animate.min.css" />
+    <Content Include="_Archive\lib\easing\easing.js" />
+    <Content Include="_Archive\lib\easing\easing.min.js" />
+    <Content Include="_Archive\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="_Archive\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="_Archive\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="_Archive\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="_Archive\lib\waypoints\links.php" />
+    <Content Include="_Archive\lib\waypoints\waypoints.min.js" />
+    <Content Include="_Archive\lib\wow\wow.js" />
+    <Content Include="_Archive\lib\wow\wow.min.js" />
+    <Content Include="_Archive\open.html" />
+    <Content Include="_Archive\price.html" />
+    <Content Include="_Archive\service.html" />
+    <Content Include="_Archive\team.html" />
+    <Content Include="_Archive\testimonial.html" />
+    <Content Include="Content\lib\owlcarousel\LICENSE" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -201,6 +320,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -235,6 +356,31 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="_Archive\lib\owlcarousel\LICENSE" />
+    <Content Include="Views\Sizes\Create.cshtml" />
+    <Content Include="Views\Sizes\Delete.cshtml" />
+    <Content Include="Views\Sizes\Details.cshtml" />
+    <Content Include="Views\Sizes\Edit.cshtml" />
+    <Content Include="Views\Sizes\Index.cshtml" />
+    <Content Include="Views\Shoes\Create.cshtml" />
+    <Content Include="Views\Shoes\Delete.cshtml" />
+    <Content Include="Views\Shoes\Details.cshtml" />
+    <Content Include="Views\Shoes\Edit.cshtml" />
+    <Content Include="Views\Shoes\Index.cshtml" />
+    <Content Include="Views\Shared\_Notification.cshtml" />
+    <Content Include="Views\Shoes\SizeFour.cshtml" />
+    <Content Include="Views\Shoes\SizeEleven.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -244,13 +390,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SneakerPlugKC.DATA.EF\SneakerPlugKC.DATA.EF.csproj">
+      <Project>{79046ce2-1eb0-4ff2-9c0c-4d640eb7cd6e}</Project>
+      <Name>SneakerPlugKC.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

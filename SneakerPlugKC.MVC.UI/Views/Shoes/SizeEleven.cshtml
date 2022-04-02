@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SneakerPlugKC.DATA.EF.Shoe>
+
+@{
+    ViewBag.Title = "Men: Size 11 | Women: Size 9.5";
+}
+
+@section AddToHead{
+    <link href="~/Content/css/product.css" rel="stylesheet" />
+}
+
+
+
+<div class="container page-wrapper">
+    <h2 style="color: black;">@ViewBag.Title</h2>
+    <div class="page-inner">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="el-wrapper">
+                        <div class="box-up">
+                            <img class="img" src="~/Content/img/shoes/t_@item.ShoePhoto" alt="@item.ShoeName">
+                            <div class="img-info">
+                                <div class="info-inner">
+                                    <span class="p-name">@Html.DisplayFor(modelItem => item.ShoeName)</span>
+                                    <span class="p-company">Condition: @Html.DisplayFor(modelItem => item.Condition)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-down">
+                            <div class="h-bg">
+                                <div class="h-bg-inner"></div>
+                            </div>
+
+                            <a class="cart" href="@Url.Action("Details", "Shoes", new { id=item.ShoeID })">
+                                <span class="price">@Html.DisplayFor(modelItem => item.Price)</span>
+                                <span class="add-to-cart">
+                                    <span class="txt">View</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model SneakerPlugKC.DATA.EF.Shoe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<section class="bg-primary padding-y-sm">
+    <div class="container">
+
+        <ol class="breadcrumb ondark mb-0">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+
+    </div> 
+</section>
+
+<section class="padding-y">
+    <div class="container">
+
+        <div class="row">
+            <aside class="col-lg-6">
+                <article class="gallery-wrap">
+                    <div class="">
+                            <img src="~/Content/img/shoes/@Model.ShoePhoto">
+
+                    </div> 
+
+                </article>
+            </aside>
+            <main class="col-lg-6">
+                <article class="ps-lg-3">
+                    <h4 class="title text-light">@Html.DisplayFor(model => model.ShoeName)</h4>
+
+                    <div class="mb-3">
+                        <var class="h5">@Html.DisplayFor(model => model.Price)</var>
+                    </div>
+
+                    <p>@Html.DisplayFor(model => model.Description)</p>
+
+                    <dl class="row">
+                        <dt class="col-3">Size</dt>
+                        <dd class="col-9">@Html.DisplayFor(model => model.Size.Sizes)</dd>
+
+                        <dt class="col-3">Quantity</dt>
+                        <dd class="col-9">@Html.DisplayFor(model => model.Quantity)</dd>
+
+                        <dt class="col-3">Condition</dt>
+                        <dd class="col-9">@Html.DisplayFor(model => model.Condition)</dd>
+                    </dl>
+                    <hr>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ShoeID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.ShoeID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-light"})
+
+                </article>
+            </main> 
+        </div> 
+
+    </div> 
+</section>
+
