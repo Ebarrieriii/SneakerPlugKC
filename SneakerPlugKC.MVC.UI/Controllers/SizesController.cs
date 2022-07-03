@@ -20,6 +20,12 @@ namespace SneakerPlugKC.MVC.UI.Controllers
             return View(db.Sizes.ToList());
         }
 
+        
+        public ActionResult ShopSize(int? id)
+        {
+            return HttpNotFound(); //Not implemented
+        }
+
         // GET: Sizes/Details/5
         public ActionResult Details(int? id)
         {

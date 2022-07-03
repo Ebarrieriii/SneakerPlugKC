@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SneakerPlugKC.DATA.EF;
+using SneakerPlugKC.MVC.UI.Services;
 using SneakerPlugKC.UI.MVC.Utilities;
 
 namespace SneakerPlugKC.MVC.UI.Controllers
@@ -16,167 +17,26 @@ namespace SneakerPlugKC.MVC.UI.Controllers
     {
         private SneakerPlugKCEntities db = new SneakerPlugKCEntities();
 
+
+        private readonly IShoesService _shoesService;
+
         // GET: Shoes
         public ActionResult Index()
         {
-            var shoes = db.Shoes.Include(s => s.Size);
-            return View(shoes.ToList());
+            return View();
         }
 
-        public ActionResult SizeFour()
+        public ShoesController(IShoesService shoesService)
         {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1003)).ToList();
-
-            return View(sizeFour);
+            this._shoesService = shoesService;
         }
 
-        public ActionResult SizeFourHalf()
+        //GET: ShoeSize
+        public ActionResult ShopSize(int id)
         {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1004)).ToList();
-
-            return View(sizeFour);
+            var shoesList = _shoesService.GetShoes(id);
+            return View(shoesList);
         }
-
-        public ActionResult SizeFive()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1005)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeFiveHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1006)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeSix()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1007)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeSixHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1008)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeSeven()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1009)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeSevenHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1010)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeEight()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1011)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeEightHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1012)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeNine()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1013)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeNineHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1014)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeTen()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1015)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeTenHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1016)).ToList();
-
-            return View(sizeFour);
-        }
-        public ActionResult SizeEleven()
-        {
-            var sizeEleven = db.Shoes.Where(x => x.SizeId.Equals(1017)).ToList();
-
-            return View(sizeEleven);
-        }
-
-        public ActionResult SizeElevenHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1018)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeTwelve()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1019)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeTwelveHalf()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1020)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeThirteen()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1021)).ToList();
-
-            return View(sizeFour);
-        }
-
-
-        public ActionResult SizeFoureen()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1022)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeFifteen()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1023)).ToList();
-
-            return View(sizeFour);
-        }
-
-        public ActionResult SizeSixteen()
-        {
-            var sizeFour = db.Shoes.Where(x => x.SizeId.Equals(1024)).ToList();
-
-            return View(sizeFour);
-        }
-
 
         // GET: Shoes/Details/5
         public ActionResult Details(int? id)
@@ -185,11 +45,14 @@ namespace SneakerPlugKC.MVC.UI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Shoe shoe = db.Shoes.Find(id);
+
+            var shoe = _shoesService.Details(id);
+
             if (shoe == null)
             {
                 return HttpNotFound();
             }
+
             return View(shoe);
         }
 
