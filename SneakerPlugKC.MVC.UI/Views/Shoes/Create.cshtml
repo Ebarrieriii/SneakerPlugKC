@@ -62,7 +62,6 @@
             <div class="checkbox">
                 @Html.EditorFor(model => model.IsInStock)
                 @Html.ValidationMessageFor(model => model.IsInStock, "", new { @class = "text-danger" })
-
             </div>
         </div>
     </div>
@@ -78,7 +77,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ShoePhoto, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            No Images Bigger Than 400px: <input type="file" style="display: inline" name="logo" />
+            No Images Bigger Than 400px: <input type="file" style="display: inline" name="logo" placeholder="Choose Photo" />
         </div>
     </div>
 

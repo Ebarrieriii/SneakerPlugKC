@@ -423,6 +423,7 @@
     <Content Include="Views\Shoes\Index.cshtml" />
     <Content Include="Views\Shared\_Notification.cshtml" />
     <Content Include="Views\Shoes\ShopSize.cshtml" />
+    <Content Include="Views\Shared\_CreateModalPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

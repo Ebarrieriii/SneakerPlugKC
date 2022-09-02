@@ -1,10 +1,13 @@
 ﻿using SneakerPlugKC.DATA.EF;
+using SneakerPlugKC.UI.MVC.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SneakerPlugKC.MVC.UI.Repositories
@@ -13,6 +16,8 @@ namespace SneakerPlugKC.MVC.UI.Repositories
     {
         IEnumerable<Shoe> GetShoes(int id);
         Shoe Details(int? id);
+        void Create([Bind(Include = "ShoeID,ShoeName,SizeId,Price,Description,Quantity,Condition,IsInStock,ShoePhoto")] Shoe shoe, HttpPostedFileBase logo);
+
     }
     public class ShoesRepository : IShoesRepository
     {
@@ -29,6 +34,12 @@ namespace SneakerPlugKC.MVC.UI.Repositories
         {
             Shoe shoe = db.Shoes.Find(id);
             return shoe;
+        }
+
+        public void Create([Bind(Include = "ShoeID,ShoeName,SizeId,Price,Description,Quantity,Condition,IsInStock,ShoePhoto")] Shoe shoe, HttpPostedFileBase logo)
+        {
+                db.Shoes.Add(shoe);
+                db.SaveChanges();
         }
     }
 }
